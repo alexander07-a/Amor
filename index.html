@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contador de nuestro amor</title>
+  <title>Contador de Amor</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Arial', sans-serif;
       background: #ffe6f0;
       color: #a3185e;
       text-align: center;
       padding: 40px 20px;
-      animation: fadeIn 2s ease-in;
     }
 
     h1 {
@@ -25,24 +24,20 @@
       margin-bottom: 40px;
     }
 
-    #arbol-imagen {
-      max-width: 250px;
-      margin: 20px auto;
-    }
-
     #frase {
       font-size: 1.2rem;
-      margin-top: 30px;
+      margin-top: 40px;
       color: #9c2653;
-      max-width: 500px;
+      max-width: 400px;
       margin-left: auto;
       margin-right: auto;
-      line-height: 1.6;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    #imagen-arbol {
+      width: 200px;
+      height: auto;
+      margin: 0 auto;
+      display: block;
     }
   </style>
 </head>
@@ -51,18 +46,15 @@
   <h1>Nuestra historia comenzó hace...</h1>
   <div id="contador">Cargando...</div>
 
-  <!-- Imagen de árbol -->
-  <img id="arbol-imagen" src="https://cdn.pixabay.com/photo/2020/10/26/10/07/tree-5687723_1280.png" alt="Árbol del amor" />
+  <img id="imagen-arbol" src="arbol.png" alt="Árbol del amor" />
 
-  <!-- Frase romántica -->
   <div id="frase">
-    Como las raíces de este árbol, nuestro amor se sostiene con fuerza, y como sus ramas, sigue creciendo hacia el cielo sin límites.
+    Como este árbol que florece con el tiempo, nuestro amor crece firme y hermoso con cada nuevo día.
   </div>
 
   <script>
-    // Fecha de inicio (ajustable)
-    const inicio = new Date();
-    inicio.setDate(inicio.getDate() - 266);
+    // Fecha fija de inicio: 24 de septiembre de 2023
+    const inicio = new Date(2023, 8, 24, 0, 0, 0); // septiembre = mes 8 (porque enero es 0)
 
     const contador = document.getElementById('contador');
 
@@ -75,9 +67,9 @@
       let horas = Math.floor(minutos / 60);
       let dias = Math.floor(horas / 24);
 
-      horas %= 24;
-      minutos %= 60;
-      segundos %= 60;
+      horas = horas % 24;
+      minutos = minutos % 60;
+      segundos = segundos % 60;
 
       contador.textContent = `${dias} días, ${horas} horas, ${minutos} minutos, ${segundos} segundos`;
     }
